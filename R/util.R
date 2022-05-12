@@ -3,7 +3,7 @@ use_cache <- function() {
 }
 
 api_url <- function() {
-  getOption("robis_api_url", "https://api.obis.org/")
+  getOption("robis_api_url", "https://api.obis.org/v3/")
 }
 
 page_size <- function() {
@@ -65,12 +65,12 @@ http_request <- function(method, path, query, verbose=FALSE) {
   url <- paste0(api_url(), path)
   if (method == "GET") {
     result <- tryCatch(
-      get(url, user_agent("robis - https://github.com/iobis/robis"), query = query),
+      get(url, user_agent("robis - https://github.com/evellinlusiana/robis"), query = query),
       error = handle_request_error
     )
   } else if (method == "POST") {
     result <- tryCatch(
-      post(url, user_agent("robis - https://github.com/iobis/robis"), body = query),
+      post(url, user_agent("robis - https://github.com/evellinlusiana/robis"), body = query),
       error = handle_request_error
     )
   }
